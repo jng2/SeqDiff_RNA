@@ -11,9 +11,6 @@ The sequence duplication levels may be high.  This is because RNA-Seq libraries 
 
 ## cutadapt to remove primer sequences from reads
 Cutadapt was used to remove the first 10 bases of each sequence, corresponding to the primers of each sequence.  Although this step is not strictly necessary, it prevents any primer sequences from being considered during mapping and differential expression analysis.
-# Pipeline for differential gene expression analysis of RNA-Seq data. 
-Based on experimental results from the Cavanaugh Lab at Loyola University Chicago.
-Cavanaugh Lab Website: https://cavanaughlab.weebly.com
 
 ## Installation 
 Bioconductor: Run these lines in R
@@ -22,6 +19,8 @@ source("http://bioconductor.org/workflows.R")
 workflowInstall("rnaseqGene")
 
 ## How to use STAR
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4631051/
 
 Alternate Protocol 9: Mapping RNA-seq reads and running Cufflinks to assemble and quantify transcripts for un-stranded RNA-seq data Cufflinks (Trapnell et al 2010) is a popular software package for assembly and quantification of transcript using RNA-seq data. In this protocol STAR outputs BAM file with coordinate-sorted alignments, which is then used by Cufflinks to assemble and quantify novel transcript structures. This Protocol works with un-stranded RNA-seq data. For stranded RNA-seq data see the Alternate Protocol 7.
 
