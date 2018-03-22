@@ -1,0 +1,4 @@
+#Install Bioconductor Package
+
+source("http://bioconductor.org/workflows.R")
+workflowInstall("rnaseqGene")
