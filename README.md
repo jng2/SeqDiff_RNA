@@ -16,6 +16,7 @@ Cutadapt was used to remove the first 10 bases of each sequence, corresponding t
 Bioconductor: Run these lines in R
 
 source("http://bioconductor.org/workflows.R")
+
 workflowInstall("rnaseqGene")
 
 ## How to use STAR
