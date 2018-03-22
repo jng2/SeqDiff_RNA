@@ -9,7 +9,7 @@ If per base sequence content is uneven at the beginning this is due to primers a
 If per sequence GC content is uneven, this is okay because the _Drosophila melanogaster_ genome has a GC bias
 The sequence duplication levels may be high.  This is because RNA-Seq libraries contain transcripts of exons that occur at various frequencies. 
 
-## cutadapt to remove primer sequences from reads
+## Cutadapt to remove primer sequences from reads
 Cutadapt was used to remove the first 10 bases of each sequence, corresponding to the primers of each sequence.  Although this step is not strictly necessary, it prevents any primer sequences from being considered during mapping and differential expression analysis.
 
 ## Installation 
