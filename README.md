@@ -1,4 +1,5 @@
-Hi, pandas are great
-<|B^D
+Installation:
 
-Pipeline for differential gene expression analysis of RNA-Seq data.
+  Bioconductor(run these lines in R):
+   source("http://bioconductor.org/workflows.R")
+   workflowInstall("rnaseqGene")
