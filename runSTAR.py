@@ -5,14 +5,15 @@ call('wget ftp://ftp.ensembl.org/pub/release-77/gtf/drosophila_melanogaster/Dros
 call('gunzip Drosophila_melanogaster.BDGP5.77.gtf.gz')
 
 #input our files
-#add in calls to select our files
+#add in calls to upload our files to the /star/ directory
 
   
 #running
 call('--cd ~/alt_cuff-unstr')
 call('~/star/code/STAR-STAR_2.4.0k/bin/Linux_x86_64/STAR\')
 call('--runThreadN 12 --genomeDir ~/star/genome/ \')
-call('--sjdbGTFfile ~/star/Homo_sapiens.GRCh38.79.gtf --sjdbOverhang 100 \')
+call('--sjdbGTFfile ~/star/Drosophila_melanogaster.BDGP5.77.gtf --sjdbOverhang 100 \')
+#change these fastq files below to our files
 call('--readFilesIn ~/star/ENCFF001RFH.fastq.gz ~/star/ENCFF001RFG.fastq.gz --readFilesCommand zcat \')
 call('--outSAMtype BAM SortedByCoordinate Unsorted \')
 call('--outSAMstrandField intronMotif')
