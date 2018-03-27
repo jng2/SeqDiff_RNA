@@ -1,5 +1,6 @@
 from subprocess import call
 #running
+call('wget 
 call('--cd ~/star/alt_cuff-unstr')
 call('~/star/code/STAR-STAR_2.4.0k/bin/Linux_x86_64/STAR\')
 call('--runThreadN 12 --genomeDir ~/star/genome/ \')
