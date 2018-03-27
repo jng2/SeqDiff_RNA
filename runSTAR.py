@@ -1,3 +1,7 @@
+#in order to make this not hardcoded and capable of taking any type of files
+# we can add in argparse functionality to have gtf file argument as well as fastq arguments
+
+
 from subprocess import call
 #input annotion
 call('cd ~/star')
