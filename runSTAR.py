@@ -14,6 +14,7 @@ call('gunzip Drosophila_melanogaster.BDGP5.77.gtf.gz')
   
 #running
 call('--cd ~/alt_cuff-unstr')
+#this is probably not our path to star need to update that below
 call('~/star/code/STAR-STAR_2.4.0k/bin/Linux_x86_64/STAR\')
 call('--runThreadN 12 --genomeDir ~/star/genome/ \')
 call('--sjdbGTFfile ~/star/Drosophila_melanogaster.BDGP5.77.gtf --sjdbOverhang 100 \')
@@ -22,4 +23,5 @@ call('--readFilesIn ~/star/ENCFF001RFH.fastq.gz ~/star/ENCFF001RFG.fastq.gz --re
 call('--outSAMtype BAM SortedByCoordinate Unsorted \')
 call('--outSAMstrandField intronMotif')
 
-call('~/star/code/cufflinks-2.2.1.Linux_x86_64/cufflinks -p 12 Aligned.sortedByCoord.out.bam')
+#p is number of threads
+call('~/star/code/cufflinks-2.2.1.Linux_x86_64/cufflinks -p 1 Aligned.sortedByCoord.out.bam')
