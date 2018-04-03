@@ -12,13 +12,6 @@ The sequence duplication levels may be high.  This is because RNA-Seq libraries 
 ## Cutadapt to remove primer sequences from reads
 Cutadapt was used to remove the first 10 bases of each sequence, corresponding to the primers of each sequence.  Although this step is not strictly necessary, it prevents any primer sequences from being considered during mapping and differential expression analysis.
 
-## Installation 
-Bioconductor: Run these lines in R
-
-source("http://bioconductor.org/workflows.R")
-
-workflowInstall("rnaseqGene")
-
 ## How to use STAR
 
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4631051/
@@ -32,6 +25,8 @@ Software Same as in the Alternate Protocol 7.
 Input files Same as in the Basic Protocol.
 
 Generating the coordinate-sorted BAM file and running Cufflinks transcript assembly and quantification
+
+
 
 Make a run directory and switch to it:
 mkdir ~/star/alt_cuff-unstr cd ~/star/alt_cuff-unstr 2. Map the FASTQ files located in the ~/star/directory (see Input Files) outputting coordinate-sorted BAM:
@@ -47,3 +42,24 @@ In the same directory run the basic Cufflinks command:
 ~/star/code/cufflinks-2.2.1.Linux_x86_64/cufflinks -p 12 Aligned.sortedByCoord.out.bam -p 12 defines the number of threads used by Cufflinks.
 
 Cufflinks output files are described in Alternative Protocol 7.
+
+
+## Bioconductor Installation 
+Bioconductor: Run these lines in R
+
+source("http://bioconductor.org/workflows.R")
+
+workflowInstall("rnaseqGene")
+
+## Bioconductor Necessary Software Packages
+source(“https://bioconductor.org/biocLite.R”)
+biocLite(c(“Rsamtools”, “DESeq2”, “GenomicFeatures”)
+
+[Rsamtools](https://bioconductor.org/packages/3.6/bioc/html/Rsamtools.html)
+provides facilities for parsing samtools BAM (binary) files representing aligned sequences
+
+[DESeq2](https://bioconductor.org/packages/3.6/bioc/html/DESeq2.html)
+performs differential gene expression analysis based on the negative binomial distribution
+
+[GenomicFeatures](https://bioconductor.org/packages/3.6/bioc/html/GenomicFeatures.html)
+provides tools for making and manipulating transcript centric annotations
