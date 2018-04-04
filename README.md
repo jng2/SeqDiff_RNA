@@ -54,7 +54,7 @@ workflowInstall("rnaseqGene")
 ## Bioconductor Necessary Software Packages
 source(“https://bioconductor.org/biocLite.R”)
 
-biocLite(c(“Rsamtools”, “DESeq2”, “GenomicFeatures”))
+biocLite(c(“Rsamtools”, “DESeq2”, “GenomicFeatures”,"BiocParallel","GenomicRanges","GenomicAlignments"))
 
 [Rsamtools](https://bioconductor.org/packages/3.6/bioc/html/Rsamtools.html)
 provides facilities for parsing samtools BAM (binary) files representing aligned sequences
