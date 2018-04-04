@@ -53,6 +53,7 @@ workflowInstall("rnaseqGene")
 
 ## Bioconductor Necessary Software Packages
 source(“https://bioconductor.org/biocLite.R”)
+
 biocLite(c(“Rsamtools”, “DESeq2”, “GenomicFeatures”)
 
 [Rsamtools](https://bioconductor.org/packages/3.6/bioc/html/Rsamtools.html)
