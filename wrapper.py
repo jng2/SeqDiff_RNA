@@ -15,7 +15,7 @@ print(type(fasta))
 
 for i in filelist:
   #######  STAR
-  print(i)
+  print(i+'\n helloooooo')
   fastq = genDir+"/FASTQ/" + i
   
 
