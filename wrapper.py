@@ -14,11 +14,11 @@ fasta =  (name for name in os.listdir(genDir) if ".fasta" in name)
 
 for i in filelist:
   #######  STAR
-  fastq = "SeqDiff/FASTQ/" + i
+  fastq = genDir+"/FASTQ/" + i
   
 
   os.system("nohup STAR --runThreadN 1 --runMode genomeGenerate --genomeDir "+genDir+" --sjdbGTFfile "+gtf+' --sjdbOverhang 100 --genomeFastaFiles '+fasta)
-  os.system("STAR --runMode alignReads --outSAMtype BAM Unsorted -- readFilesCommand zcat --genomeDir "+genDir+" --readFilesIn "+line+" --runThreadN 1 --outFileNamePrefix fastq")
+  os.system("STAR --runMode alignReads --outSAMtype BAM Unsorted -- readFilesCommand zcat --genomeDir "+genDir+" --readFilesIn "+fastq+" --runThreadN 1 --outFileNamePrefix"+ fastq +".out")
 
   #######  BIOCONDUCTOR
   
