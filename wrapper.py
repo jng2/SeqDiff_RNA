@@ -10,7 +10,8 @@ filelist=os.listdir(genDir + "/FASTQ/")
 filecount = len(filelist)
 gtf = (name for name in os.listdir(genDir) if ".gtf" in name)
 fasta =  (name for name in os.listdir(genDir) if ".fasta" in name)
-
+type(gtf)
+type(fasta)
 
 for i in filelist:
   #######  STAR
