@@ -4,14 +4,14 @@ import os
 
 #1 input for /path/to/folder/ which contains all necessary files
 print("Enter the path to the SeqDiff directory.\nDirectory should contain\nA folder titled 'FASTQ' containing 1-10 fastq files,\nOne gtf annotation file,\nOne genome .fasta file")
-genDir = input("SeqDiff Directory path: ")
-
+#genDir = input("SeqDiff Directory path: ")
+genDir = "/homes/jng2/SeqDiff/"
 filelist=os.listdir(genDir + "/FASTQ/")
 filecount = len(filelist)
 gtf = (name for name in os.listdir(genDir) if ".gtf" in name)
 fasta =  (name for name in os.listdir(genDir) if ".fasta" in name)
-type(gtf)
-type(fasta)
+print(type(gtf))
+print(type(fasta))
 
 for i in filelist:
   #######  STAR
