@@ -8,8 +8,8 @@ genDir = input("SeqDiff Directory path: ")
 
 filelist=os.listdir("SeqDiff/FASTQ/")
 filecount = len(filelist)
-gtf = input("Path to gtf file: ")
-fasta = ("Path to fasta file: ")
+gtf = [name for name in os.listdir('SeqDiff') if name contains ".gtf")])
+fasta =  [name for name in os.listdir('SeqDiff') if name contains ".fasta")])
 
 
 for i in filelist:
