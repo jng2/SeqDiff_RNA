@@ -8,8 +8,8 @@ print("Enter the path to the SeqDiff directory.\nDirectory should contain\nA fol
 genDir = "/homes/jng2/SeqDiff/"
 filelist=os.listdir(genDir + "/FASTQ/")
 filecount = len(filelist)
-gtf = (name for name in os.listdir(genDir) if ".gtf" in name)
-fasta =  (name for name in os.listdir(genDir) if ".fasta" in name)
+gtf = str(name for name in os.listdir(genDir) if ".gtf" in name)
+fasta =  str(name for name in os.listdir(genDir) if ".fasta" in name)
 print(type(gtf))
 print(type(fasta))
 
