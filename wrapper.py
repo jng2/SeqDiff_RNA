@@ -12,7 +12,7 @@ gtf = input("Path to gtf file: ")
 fasta = ("Path to fasta file: ")
 
 
-for(i in filelist):
+for i in filelist:
   #######  STAR
   fastq = "SeqDiff/FASTQ/" + i
   
