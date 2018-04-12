@@ -1,24 +1,43 @@
 import os
+import argparse
+import gzip
 
-#starting to compile the wrapper
 
-#1 input for /path/to/folder/ which contains all necessary files
-print("Enter the path to the SeqDiff directory.\nDirectory should contain\nA folder titled 'FASTQ' containing 1-10 fastq files,\nOne gtf annotation file,\nOne genome .fasta file\n")
-genDir = input(">")
 
-#identify directory containing all fastq files
-filelist=os.listdir(genDir + "/FASTQ/")
+##WORK IN PROGRESS
 
+#set up our argument parser
+parser = argparse.ArgumentParser()
+parser.add_argument("fq",help="fastq or directory(compressed or not) containig all fastq")
+parser.add_argument("fs",help="genome fasta")
+parser.add_argument("gtf",help="gtf annotation")
+parser.add_argument("out",help="output directory")
+args = parser.parse_args()
+
+##file identification
+
+#identify fastq or directory(compressed or not) containing all fastq files
+filelist=[]
+if(os.path.isdir(args.fq)):
+  filelist=os.listdir(args.fq)
+elif(os.path.isfile(args.fq)):
+  if ".gz" in args.fq:
+    filelist=os.listdir(gzip.open(args.fq))
+  elif ".fastq" in args.fq:
+    filelist.append(args.fq)
+else:
+  print("fastq could not be found")
+    
 #identify gtf and fasta for STAR
-gtf = str(name for name in os.listdir(genDir) if ".gtf" in name)
-fasta =  str(name for name in os.listdir(genDir) if ".fasta" in name)
+gtf = args.gtf
+fasta =  args.fs
 
 #loop through fastq files and run them on star
 #we can add an if statement here to check if we even need to run star. 
 for i in filelist:
   #######  STAR
   print(i+'\n helloooooo')
-  fastq = genDir+"/FASTQ/" + i
+  fastq = i
 
   os.system("STAR --runThreadN 1 --runMode genomeGenerate --genomeDir "+genDir+" --sjdbGTFfile "+gtf+' --sjdbOverhang 100 --genomeFastaFiles '+fasta)
   os.system("STAR --runMode alignReads --outSAMtype BAM Unsorted -- readFilesCommand zcat --genomeDir "+genDir+" --readFilesIn "+fastq+" --runThreadN 1 --outFileNamePrefix genDir/StarOut/"+ i)
