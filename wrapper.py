@@ -24,5 +24,7 @@ for i in filelist:
   os.system("STAR --runMode alignReads --outSAMtype BAM Unsorted -- readFilesCommand zcat --genomeDir "+genDir+" --readFilesIn "+fastq+" --runThreadN 1 --outFileNamePrefix genDir/StarOut/"+ i)
 
   #######  BIOCONDUCTOR
-  #this will display output, however we may need to add a line of code which stores output of multiple runs into a directory. 
+  #This will display output, however we may need to add a line of code to 
+  # testGeneExpression.R that stores output of multiple runs into a directory.
+  # Then we can view our data in a more organized manner. 
   os.system("Rscript testGeneExpression.R " +"genDir/StarOut/"+ i )
