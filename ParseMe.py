@@ -24,6 +24,8 @@ with open('2W_ControlJetlag.csv') as csvfile:
                 line.append(holdme[line[0]])
                 ans.append(line)
         else:
+            strign="Name"
+            line.append(strign)
             ans.append(line)
         i+=1
 with open('2W_ControlJetlagTest_pythonparser.csv','w',newline='') as csvout: #writes it out
