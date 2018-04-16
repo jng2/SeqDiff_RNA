@@ -12,7 +12,7 @@ parser.add_argument("fq",help="fastq or directory(compressed or not) containig a
 parser.add_argument("fs",help="genome fasta")
 parser.add_argument("gtf",help="gtf annotation")
 parser.add_argument("out",help="output directory")
-parser.add_arugment("meta",help="Enter in the metadata file path")
+#parser.add_arugment("meta",help="Enter in the metadata file path")
 args = parser.parse_args()
 
 ##file identification
