@@ -12,6 +12,7 @@ parser.add_argument("fq",help="fastq or directory(compressed or not) containig a
 parser.add_argument("fs",help="genome fasta")
 parser.add_argument("gtf",help="gtf annotation")
 parser.add_argument("out",help="output directory")
+parser.add_arugment("meta",help="Enter in the metadata file path")
 args = parser.parse_args()
 
 ##file identification
@@ -40,6 +41,7 @@ for i in filelist:
   fastq = i
 
   os.system("STAR --runThreadN 1 --runMode genomeGenerate --genomeDir "+genDir+" --sjdbGTFfile "+gtf+' --sjdbOverhang 100 --genomeFastaFiles '+fasta)
+  print('hi')
   os.system("STAR --runMode alignReads --outSAMtype BAM Unsorted -- readFilesCommand zcat --genomeDir "+genDir+" --readFilesIn "+fastq+" --runThreadN 1 --outFileNamePrefix genDir/StarOut/"+ i)
 
   #######  BIOCONDUCTOR
