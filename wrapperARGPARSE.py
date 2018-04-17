@@ -74,8 +74,8 @@ if alignMe =='no':
 
     
   #######  BIOCONDUCTOR
-  #This will display output, however we may need to add a line of code to 
-  # testGeneExpression.R that stores output of multiple runs into a directory.
+  #This will display output
+  # testGeneExpression.R that stores output of multiple runs into a directory. I->It doesn't.  I can try to do that?
   # Then we can view our data in a more organized manner.
 hi=args.out
 hi=hi[:-1]
