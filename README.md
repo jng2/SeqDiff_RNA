@@ -101,7 +101,8 @@ The final Bioconductor output is a csv file containing the following information
 * symbol: gene symbol obtained from MyGene database
 * type: gene type obtained from MyGene database
 
-Example
+**Example**
+
 | X | baseMean | log2FoldChange | lfcSE | stat | p-value | padj | symbol | type |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- }
 | FBgn0024897 | 122.142693644405 | -1.40124063594649 | 0.272652681194509 | -5.1392879388076 | 2.75781528244776e-07 | 0.00105893212307788 | b6 | protein-coding |
