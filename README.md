@@ -78,3 +78,16 @@ representation and manipulation of genomic intervals defined along a genome
 
 [GenomicAlignments](https://www.bioconductor.org/packages/release/bioc/html/GenomicAlignments.html)
 representation and manipulation of short genomic alignments
+
+## Bioconductor Metadata Input File Format
+
+It is important that the Metadata is formatted properly in order for Bioconductor to run properly. Here is an [example of the proper format.](https://github.com/jng2/SeqDiff_RNA/blob/master/metadata.txt):
+````
+File,Time,Group,Run
+C_3W_A_USR16088998L_HHFWCBBXX_L5_1,3W,Control,C_3W_A_USR16088998L_HHFWCBBXX_L5_1
+````
+In this example, the file name is C_3W_A_USR16088998L_HHFWCBBXX_L5_1, it is from the 3 week time point, in the control group, and run is the file name repeated.
+
+
+
+
