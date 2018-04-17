@@ -1,4 +1,5 @@
 import os
+import sys
 import argparse
 import gzip
 
@@ -14,7 +15,7 @@ import gzip
 
 #set up our argument parser
 parser = argparse.ArgumentParser()
-parser.add_argument("fq",help="fastq or directory(compressed or not) containig all fastq")
+parser.add_argument("fq",help="fastq or directory(compressed or not) containing all fastq")
 parser.add_argument("fs",help="genome fasta")
 parser.add_argument("gtf",help="gtf annotation")
 parser.add_argument("out",help="output directory")
@@ -37,6 +38,7 @@ elif(os.path.isfile(args.fq)):
         filelist.append(args.fq)
 else:
     print("fastq could not be found") #kill the program here!
+    sys.exit(0)
 filelist.sort() #sort should allow for it.  Check by odd/even amount for left right? Check for duplicates?
 star=args.NoStarGenome
 alignMe=args.NoStarAlignment
