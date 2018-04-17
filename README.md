@@ -91,14 +91,14 @@ In this example, the file name is C_3W_A_USR16088998L_HHFWCBBXX_L5_1, it is from
 ## Final Bioconductor Output
 
 The final Bioconductor output is a csv file containing the following information: 
-*X: gene name
-*baseMean: average of the normalized count values divided by the size of factors, taken over all samples in the _DESeqDataSet_
-*log2FoldChange: effect size estimate, how much a gene's expression has changed between groups 
-*lfcSE(logfoldchangeStandardError): estimate of uncertainty of the effect size estimate
-*stat:
-*p-value: the probability thta the fold change is as strong as the observed one or stronger given the null hypotheses
-*padj: lowered false discovery rate
-*symbol: gene symbol obtained from MyGene database
-*type: gene type obtained from MyGene database
+* X: gene name
+* baseMean: average of the normalized count values divided by the size of factors, taken over all samples in the _DESeqDataSet_
+* log2FoldChange: effect size estimate, how much a gene's expression has changed between groups 
+* lfcSE(logfoldchangeStandardError): estimate of uncertainty of the effect size estimate
+* stat: Wald statistic
+* p-value: Wald test p-value, the probability thta the fold change is as strong as the observed one or stronger given the null hypotheses
+* padj: Benjamini-Hochberg adjusted p-value, lowered false discovery rate
+* symbol: gene symbol obtained from MyGene database
+* type: gene type obtained from MyGene database
 
 More details on the output can be found [here](http://www.bioconductor.org/help/workflows/rnaseqGene/#building-the-results-table) in section 6.2, building the results table.
