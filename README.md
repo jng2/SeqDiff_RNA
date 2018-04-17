@@ -48,7 +48,13 @@ Bioconductor: Run these lines in R
 source("http://bioconductor.org/workflows.R")
 workflowInstall("rnaseqGene")
 ```
+## R Packages Necessary for Bioconductor Alignment
 
+[dplyr](https://cran.r-project.org/web/packages/dplyr/index.html)
+tool for working with data frame like objects, both in and out of memory
+
+[ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html)
+tool for creating data visualizations using the grammar of graphics
 
 ## Bioconductor Necessary Software Packages
 source(“https://bioconductor.org/biocLite.R”)
@@ -63,3 +69,12 @@ performs differential gene expression analysis based on the negative binomial di
 
 [GenomicFeatures](https://bioconductor.org/packages/3.6/bioc/html/GenomicFeatures.html)
 provides tools for making and manipulating transcript centric annotations
+
+[BiocParallel](https://www.bioconductor.org/packages/release/bioc/html/BiocParallel.html)
+provides modified versions and novel implementations of functions for parallel evaluation of Bioconductor objects
+
+[GenomicRanges](https://www.bioconductor.org/packages/release/bioc/html/GenomicRanges.html)
+representation and manipulation of genomic intervals defined along a genome
+
+[GenomicAlignments](https://www.bioconductor.org/packages/release/bioc/html/GenomicAlignments.html)
+representation and manipulation of short genomic alignments
