@@ -90,20 +90,26 @@ C_3W_A_USR16088998L_HHFWCBBXX_L5_1,3W,Control,C_3W_A_USR16088998L_HHFWCBBXX_L5_1
 ````
 In this example, the file name is C_3W_A_USR16088998L_HHFWCBBXX_L5_1, it is from the 3 week time point, in the control group, and run is the file name repeated.
 
+## Bioconductor Alignment
+
+## Obtaining FlyBase data with Bioconductor MyGene
+
+[MyGene](https://bioconductor.org/packages/release/bioc/html/mygene.html) is a Bioconductor package that allows users to query and retrieve gene annotation data from a variety of online databases. This pipeline uses it to obtain the gene symbol and gene type of a the differentially expressed genes determined by DeSeq2. This information is then added to the Bioconductor final csv output. 
+
 ## Final Bioconductor Output
 
 The final Bioconductor output is a csv file containing the following information: 
-* X: gene name
-* baseMean: average of the normalized count values divided by the size of factors, taken over all samples in the _DESeqDataSet_
-* log2FoldChange: effect size estimate, how much a gene's expression has changed between groups 
-* lfcSE(logfoldchangeStandardError): estimate of uncertainty of the effect size estimate
-* stat: Wald statistic
-* p-value: Wald test p-value, the probability thta the fold change is as strong as the observed one or stronger given the null hypotheses
-* padj: Benjamini-Hochberg adjusted p-value, lowered false discovery rate
-* symbol: gene symbol obtained from MyGene database
-* type: gene type obtained from MyGene database
+* **X**: gene name
+* **baseMean**: average of the normalized count values divided by the size of factors, taken over all samples in the _DESeqDataSet_
+* **log2FoldChange**: effect size estimate, how much a gene's expression has changed between groups 
+* **lfcSE(logfoldchangeStandardError)**: estimate of uncertainty of the effect size estimate
+* **stat**: Wald statistic
+* **p-value**: Wald test p-value, the probability thta the fold change is as strong as the observed one or stronger given the null hypotheses
+* **padj**: Benjamini-Hochberg adjusted p-value, lowered false discovery rate
+* **symbol**: gene symbol obtained from MyGene database
+* **type**: gene type obtained from MyGene database
 
-**Example**
+**Example:**
 
 | X | baseMean | log2FoldChange | lfcSE | stat | p-value | padj | symbol | type |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
