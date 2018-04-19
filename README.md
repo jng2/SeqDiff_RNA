@@ -12,6 +12,7 @@ The sequence duplication levels may be high.  This is because RNA-Seq libraries 
 
 ## Organizing Files For Pipeline
 * **Make metadata file**
+* **how to clone repo or download from github**
 
 ## Pyhton Wrapper
 After completing quality control locally. Data files can be input into the python wrapper, [SeqDiff.py](https://github.com/jng2/SeqDiff_RNA/blob/master/SeqDiff.py) that will run through every other stepp of the differential expression pipeline. In order to run the pipeline, in terminal on a mac or command prompt on a windows computer, type the following comand:
