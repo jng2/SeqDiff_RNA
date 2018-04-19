@@ -1,3 +1,9 @@
+if(args[4]='yes'){
+  source("https://bioconductor.org/biocLite.R")
+  biocLite(c("Rsamtools", "DESeq2", "GenomicFeatures","BiocParallel","GenomicRanges","GenomicAlignments","Rsamtools","mygene"))
+  
+}
+
 library("Rsamtools")
 library("GenomicFeatures")
 library("BiocParallel")
@@ -8,11 +14,7 @@ library("dplyr")
 library("ggplot2")
 library("mygene")
 
-if(args[4]='yes'){
-  source("https://bioconductor.org/biocLite.R")
-  biocLite(c("Rsamtools", "DESeq2", "GenomicFeatures","BiocParallel","GenomicRanges","GenomicAlignments","Rsamtools","mygene"))
 
-}
 ptm <- proc.time()
 args=commandArgs(trailingOnly = TRUE)
 sampleTable <-read.csv(args[1],row.names=1)
