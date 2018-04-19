@@ -1,4 +1,4 @@
-# Pipeline for differential gene expression analysis of RNA-Seq data. 
+# Pipeline for Differential Gene Expression Analysis of RNA-Seq Data. 
 ![](https://github.com/jng2/SeqDiff_RNA/blob/master/DiffExpressionPipeline.jpg)
 
 Based on experimental results from the Cavanaugh Lab at Loyola University Chicago.
