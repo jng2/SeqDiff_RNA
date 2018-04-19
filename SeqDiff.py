@@ -76,7 +76,7 @@ if alignMe =='no':
       #######  STAR
         if x==0:
             line1=args.fq+i
-            name=i.replace(".fq.gz", "").replace(".fastq.gz","")
+            name=i.replace(".fq.gz", ".sd").replace(".fastq.gz",".sd")
             x+=1
         elif x==1:
             line2=args.fq+i
