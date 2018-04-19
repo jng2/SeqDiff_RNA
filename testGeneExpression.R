@@ -1,4 +1,4 @@
-if(args[4]='yes'){
+if(args[4]=='yes'){
   source("https://bioconductor.org/biocLite.R")
   biocLite(c("Rsamtools", "DESeq2", "GenomicFeatures","BiocParallel","GenomicRanges","GenomicAlignments","Rsamtools","mygene"))
   
