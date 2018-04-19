@@ -1,8 +1,7 @@
 # Pipeline for Differential Gene Expression Analysis of RNA-Seq Data. 
 ![](https://github.com/jng2/SeqDiff_RNA/blob/master/DiffExpressionPipeline.jpg)
 
-Based on experimental results from the Cavanaugh Lab at Loyola University Chicago.
-Cavanaugh Lab Website: https://cavanaughlab.weebly.com
+Based on experimental results from the [Cavanaugh Lab](https://cavanaughlab.weebly.com) at Loyola University Chicago.
 
 ## FastQC for quality control
 Download FastQC from https://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc
