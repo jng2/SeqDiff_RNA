@@ -16,7 +16,7 @@ import gzip
 #set up our argument parser
 parser = argparse.ArgumentParser()
 parser.add_argument("fq",help="fastq or directory(compressed or not) containing all fastq")
-parser.add_argument("fs",help="genome fasta")
+parser.add_argument("fa",help="genome fasta")
 parser.add_argument("gtf",help="gtf annotation")
 parser.add_argument("out",help="output directory")
 parser.add_argument("meta",help="Enter in the metadata file path")
@@ -43,9 +43,21 @@ filelist.sort() #sort should allow for it.  Check by odd/even amount for left ri
 star=args.NoStarGenome
 alignMe=args.NoStarAlignment
 print(star)
-#identify gtf and fasta for STAR
-gtf = args.gtf
-fasta =  args.fs
+
+
+#identify gtf
+if ".gtf" in args.gtf:
+    gtf = args.gtf
+else:
+    print("gtf could not be found")
+    sys.exit(0)
+    
+#identify fasta 
+if ".fasta" in args.fa:
+    fasta =  args.fa
+else: 
+    print("fasta could not be found")
+    sys.exit(0)
 
 #loop through fastq files and run them on star
 #we can add an if statement here to check if we even need to run star. 
