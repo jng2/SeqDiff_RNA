@@ -23,6 +23,7 @@ parser.add_argument("meta",help="Enter in the metadata file path")
 parser.add_argument('--NoStarGenome',help="If you don't need to do set up a STAR genome, please use this option.",default='no',action='store_const', const='yes')
 parser.add_argument('--NoStarAlignment',help="If you don't need to do any alignment of fastq files, please use this option.", default='no',action='store_const', const='yes')
 parser.add_argument('--UseParser',help="If MyGene is no longer working with FlyBase, please use this option to use a python parser instead.  It will not be able to output all of the variables, however.",default='no',action='store_const', const='yes')
+parser.add_argument('--RInstall',help="If you need to install the necessary R packages, please use this option",default='no',action='store_const', const='yes')
 args = parser.parse_args()
 
 ##file identification
@@ -95,7 +96,7 @@ if args.UseParser=='no':
     hi=args.out
     hi=hi[:-1]
     group=args.group.strip()
-    os.system("Rscript testGeneExpression.R "+args.meta+' ' +hi + ' ' + gtf + ' ' + group) 
+    os.system("Rscript testGeneExpression.R "+args.meta+' ' +hi + ' ' + gtf + ' ' + group+ ' ' args.RInstall) 
 
 else:
     import csv
