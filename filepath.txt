@@ -1,0 +1,1 @@
+python3 testWrapperArg.py /homes/jng2/SeqDiff/fastqHere/ /homes/jng2/SeqDiff/dmel-all-chromosome-r6.20.fasta /homes/jng2/SeqDiff/dmel-all-r6.20.gtf /homes/jng2/SeqDiff/StarOut/ /homes/jng2/SeqDiff/testmeta.txt 
