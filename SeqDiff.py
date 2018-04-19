@@ -91,7 +91,7 @@ if alignMe =='no':
   #This will display output
   # testGeneExpression.R that stores output of multiple runs into a directory. I->It doesn't.  I can try to do that?
   # Then we can view our data in a more organized manner.
-if args.parser=='no':
+if args.UseParser=='no':
     hi=args.out
     hi=hi[:-1]
     group=args.group.strip()
