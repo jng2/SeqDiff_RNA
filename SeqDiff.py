@@ -94,8 +94,8 @@ if alignMe =='no':
 if args.UseParser=='no':
     hi=args.out
     hi=hi[:-1]
-    group=args.group.strip()
-    os.system("Rscript testGeneExpression.R "+args.meta+' ' +hi + ' ' + gtf + ' ' + group) 
+   # group=args.group.strip()
+    os.system("Rscript testGeneExpression.R "+args.meta+' ' +hi + ' ' + gtf + ' ' + args.RInstall) 
 
 else:
     import csv
