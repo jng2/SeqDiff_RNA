@@ -9,7 +9,25 @@ Download FastQC from https://www.bioinformatics.babraham.ac.uk/projects/download
 Drag and Drop files into FastQC to determine quality of data
 If per base sequence content is uneven at the beginning this is due to primers and is okay.  You can cut this area out of the sequence, but leaving it in will not alter the results of the differential expression analysis. 
 If per sequence GC content is uneven, this is okay because the _Drosophila melanogaster_ genome has a GC bias
-The sequence duplication levels may be high.  This is because RNA-Seq libraries contain transcripts of exons that occur at various frequencies. 
+The sequence duplication levels may be high.  This is because RNA-Seq libraries contain transcripts of exons that occur at various frequencies. This step is done manually because it is more user-friendly and useful to visualize the data to determine the quality of the sequences to be used in the pipeline. 
+
+## Organizing Files For Pipeline
+* **Make metadata file**
+
+## Pyhton Wrapper
+After completing quality control locally. Data files can be input into the python wrapper, [SeqDiff.py](https://github.com/jng2/SeqDiff_RNA/blob/master/SeqDiff.py) that will run through every other stepp of the differential expression pipeline. In order to run the pipeline, in terminal on a mac or command prompt on a windows computer, type the following comand:
+```
+python3 SeqDiff.py fq fa gtf out meta --NoStarGenome --NoStarAlignment --UseParser
+```
+The following arguements for the python wraper are for the following pieces of information:
+* **fq**: the fastq file or directory(compressed or not) containing all fastq files
+* **fa**: the fasta file containing the reference genome
+* **gtf**: the gtf file containing the gtf gene annoation for the reference genome (note: the fasta and gtf files for the reference genome should be obtained from the same source to avoid difficulties with STAR alignment)
+* **out**: the output directory
+* **meta**: metadata file path 
+* **--NoStarGenome**: add this argument if you have previously set up a STAR genome (this step takes a long time, so adding this agrument allows you to skip it if it has already been competed)
+* **--NoStarAligmnent**: add this argument if you have previously aligned the fastq files to the reference genome (this step takes a long time, so adding this agrument allows you to skip it if it has already been competed)
+* **--UseParser**: if MyGene no longer can retrieve information from FlyBase (due to FlyBase transitioning to a paid database) 
 
 
 ## How to use STAR
