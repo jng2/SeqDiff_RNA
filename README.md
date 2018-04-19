@@ -116,3 +116,6 @@ The final Bioconductor output is a csv file containing the following information
 | FBgn0024897 | 122.142693644405 | -1.40124063594649 | 0.272652681194509 | -5.1392879388076 | 2.75781528244776e-07 | 0.00105893212307788 | b6 | protein-coding |
 
 More details on the output can be found [here](http://www.bioconductor.org/help/workflows/rnaseqGene/#building-the-results-table) in section 6.2, building the results table.
+
+The Bioconductor output will also include a volcano plot like the one shown below.  A volcano plot is a scatterplot that combines magnitude of change and a measure of statistical significance in order to identify data points with large magnitude changes that are statistically significant. In the plot below, the red dots indicate the statistically significant differentially expressed genes between the week 3 control and jet lagged groups. 
+![](https://github.com/jng2/SeqDiff_RNA/blob/master/Week3Volanco.PNG)
