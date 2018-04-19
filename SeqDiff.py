@@ -34,7 +34,7 @@ if(os.path.isdir(args.fq)):
 elif(os.path.isfile(args.fq)):
     #if ".gz" in args.fq:
      #   filelist=os.listdir(gzip.open(args.fq))
-    elif ".fastq" in args.fq or ".fq" in args.fq:
+    elif(".fastq" in args.fq or ".fq" in args.fq):
         filelist.append(args.fq)
 else:
     print("fastq could not be found") #kill the program here!
