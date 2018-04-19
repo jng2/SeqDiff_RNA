@@ -46,7 +46,9 @@ Generating the coordinate-sorted BAM file and running Cufflinks transcript assem
 
 
 Make a run directory and switch to it:
+```
 mkdir ~/star/alt_cuff-unstr cd ~/star/alt_cuff-unstr 2. Map the FASTQ files located in the ~/star/directory (see Input Files) outputting coordinate-sorted BAM:
+```
 
 ~/star/code/STAR-STAR_2.4.0k/bin/Linux_x86_64/STAR
 --runThreadN 12 --genomeDir ~/star/genome/ 
@@ -56,7 +58,9 @@ mkdir ~/star/alt_cuff-unstr cd ~/star/alt_cuff-unstr 2. Map the FASTQ files loca
 --outSAMstrandField intronMotif --outSAMstrandField intronMotif option adds an XS attribute to the spliced alignments in the BAM file, which is required by Cufflinks for unstranded RNA-seq data.
 
 In the same directory run the basic Cufflinks command:
+```
 ~/star/code/cufflinks-2.2.1.Linux_x86_64/cufflinks -p 12 Aligned.sortedByCoord.out.bam -p 12 defines the number of threads used by Cufflinks.
+```
 
 Cufflinks output files are described in Alternative Protocol 7.
 
