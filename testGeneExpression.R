@@ -19,7 +19,7 @@ library("mygene")
 ptm <- proc.time()
 
 sampleTable <-read.csv(args[1],row.names=1)
-filenames <- file.path(args[2],paste0(sampleTable$Run,"_staroutAligned.out.bam")) #naming might fuck up ><
+filenames <- file.path(args[2],paste0(sampleTable$Run,".sd_staroutAligned.out.bam")) #naming might fuck up ><
 bamfile <-BamFileList(filenames,yieldSize = 2000000)
 
 gtffile <- file.path(args[3])
