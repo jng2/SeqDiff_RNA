@@ -22,7 +22,7 @@ parser.add_argument("out",help="output directory")
 parser.add_argument("meta",help="Enter in the metadata file path")
 parser.add_argument('--NoStarGenome',help="If you don't need to do set up a STAR genome, please use this option.",default='no',action='store_const', const='yes')
 parser.add_argument('--NoStarAlignment',help="If you don't need to do any alignment of fastq files, please use this option.", default='no',action='store_const', const='yes')
-
+parser.add_argument('--UseParser',help="If MyGene is no longer working with FlyBase, please use this option to use a python parser instead.  It will not be able to output all of the variables, however.",default='no',action='store_const', const='yes')
 args = parser.parse_args()
 
 ##file identification
@@ -91,7 +91,38 @@ if alignMe =='no':
   #This will display output
   # testGeneExpression.R that stores output of multiple runs into a directory. I->It doesn't.  I can try to do that?
   # Then we can view our data in a more organized manner.
-hi=args.out
-hi=hi[:-1]
-group=args.group.strip()
-os.system("Rscript testGeneExpression.R "+args.meta+' ' +hi + ' ' + gtf + ' ' + group) 
+if args.parser=='no':
+    hi=args.out
+    hi=hi[:-1]
+    group=args.group.strip()
+    os.system("Rscript testGeneExpression.R "+args.meta+' ' +hi + ' ' + gtf + ' ' + group) 
+
+else:
+    import csv
+    holdme={}
+    with open('dmel-all-r6.20.gtf') as gtf:
+    #Make dictionary of the gtf file
+        for line in gtf:
+            hi=line.split('\t')
+            hey=hi[8].split('"')
+            if hey[1] not in holdme.keys():
+                holdme[hey[1]]=hey[3]
+    ans=[]
+    with open('2W_ControlJetlag.csv') as csvfile:
+        yo = csv.reader(csvfile, delimiter=",") #yo is a csv.reader object that plays like a list
+        i=0
+        for line in yo:
+            if i>=1:
+                print(line[0])
+                if line[0] in holdme.keys(): #searches if flybase id is found within dictionary and then takes the name from the dictionary.  The only information that i could find within the .gtf file
+                    line.append(holdme[line[0]])
+                    ans.append(line)
+            else:
+                strign="Name"
+                line.append(strign)
+                ans.append(line)
+            i+=1
+    with open('2W_ControlJetlagTest_pythonparser.csv','w',newline='') as csvout: #writes it out
+        writer=csv.writer(csvout,delimiter=',')
+        for line in ans:
+            writer.writerow(line)
