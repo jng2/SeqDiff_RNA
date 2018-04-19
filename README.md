@@ -100,7 +100,7 @@ representation and manipulation of short genomic alignments
 
 ## Bioconductor Metadata Input File Format
 
-It is important that the Metadata is formatted properly in order for Bioconductor to run properly. Here is an [example of the proper format.](https://github.com/jng2/SeqDiff_RNA/blob/master/metadata.txt):
+It is important that the Metadata is formatted properly in order for Bioconductor to run properly. Here is an [example of the proper format](https://github.com/jng2/SeqDiff_RNA/blob/master/metadata.txt):
 ````
 File,Time,Group,Run
 C_3W_A_USR16088998L_HHFWCBBXX_L5_1,3W,Control,C_3W_A_USR16088998L_HHFWCBBXX_L5_1
