@@ -1,3 +1,4 @@
+args=commandArgs(trailingOnly = TRUE)
 if(args[4]=='yes'){
   source("https://bioconductor.org/biocLite.R")
   biocLite(c("Rsamtools", "DESeq2", "GenomicFeatures","BiocParallel","GenomicRanges","GenomicAlignments","Rsamtools","mygene"))
@@ -16,7 +17,7 @@ library("mygene")
 
 
 ptm <- proc.time()
-args=commandArgs(trailingOnly = TRUE)
+
 sampleTable <-read.csv(args[1],row.names=1)
 filenames <- file.path(args[2],paste0(sampleTable$Run,"_staroutAligned.out.bam")) #naming might fuck up ><
 bamfile <-BamFileList(filenames,yieldSize = 2000000)
