@@ -7,7 +7,7 @@ Cavanaugh Lab Website: https://cavanaughlab.weebly.com
 ## FastQC for quality control
 Download FastQC from https://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc
 Drag and Drop files into FastQC to determine quality of data
-If per base sequence content is uneven at the beginning this is due to primers and is okay.  You can cut this area out of the sequence, for this analysis we removed the first 10 bases.
+If per base sequence content is uneven at the beginning this is due to primers and is okay.  You can cut this area out of the sequence, but leaving it in will not alter the results of the differential expression analysis. 
 If per sequence GC content is uneven, this is okay because the _Drosophila melanogaster_ genome has a GC bias
 The sequence duplication levels may be high.  This is because RNA-Seq libraries contain transcripts of exons that occur at various frequencies. 
 
@@ -91,6 +91,7 @@ C_3W_A_USR16088998L_HHFWCBBXX_L5_1,3W,Control,C_3W_A_USR16088998L_HHFWCBBXX_L5_1
 In this example, the file name is C_3W_A_USR16088998L_HHFWCBBXX_L5_1, it is from the 3 week time point, in the control group, and run is the file name repeated.
 
 ## Bioconductor Alignment
+[DESeq2](https://bioconductor.org/packages/3.6/bioc/html/DESeq2.html) is a Bioconductor package that performs differential gene expression analysis based on the negaitve binomial distribution. In this pipeline, the DESeq2 is used to determine which genes are differenitally expressed between pipelines using [_SummarizedExperiment_](http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#summarizedexperiment-input) input.
 
 ## Obtaining FlyBase data with Bioconductor MyGene
 
