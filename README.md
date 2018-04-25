@@ -12,6 +12,17 @@ The sequence duplication levels may be high.  This is because RNA-Seq libraries 
 
 ## Organizing Files For Pipeline
 * **Make metadata file**
+A [metadata file](https://github.com/jng2/SeqDiff_RNA/blob/master/metadata.txt) must be made to ensure the proper organization of the data/  This metadata file should be formatted as follows:
+```
+Gene Name,Time,Group,Run
+C_3W_A_USR16088998L_HHFWCBBXX_L5_1,3W,Control,C_3W_A_USR16088998L_HHFWCBBXX_L5_1
+J_3W_A_USR16089004L_HHFWCBBXX_L5_1,3W,JetLagged,J_3W_A_USR16089004L_HHFWCBBXX_L5_1
+```
+Gene Name is the name of the gene
+Time is the time at which the DNA was extracted from the cells (ex: 3W or 2W)
+Group is either Control or JetLagged
+Run is a restatement of the Gene Name
+
 * **how to clone repo or download from github**
 
 ## Python Wrapper
