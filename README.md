@@ -12,18 +12,7 @@ The sequence duplication levels may be high.  This is because RNA-Seq libraries 
 
 ## Organizing Files For Pipeline
 * **Make metadata file**
-A [metadata file](https://github.com/jng2/SeqDiff_RNA/blob/master/metadata.txt) must be made to ensure the proper organization of the data/  This metadata file should be formatted as follows:
-```
-Gene Name,Time,Group,Run
-C_3W_A_USR16088998L_HHFWCBBXX_L5_1,3W,Control,C_3W_A_USR16088998L_HHFWCBBXX_L5_1
-J_3W_A_USR16089004L_HHFWCBBXX_L5_1,3W,JetLagged,J_3W_A_USR16089004L_HHFWCBBXX_L5_1
-```
-Gene Name is the name of the gene
-Time is the time at which the DNA was extracted from the cells (ex: 3W or 2W)
-Group is either Control or JetLagged
-Run is a restatement of the Gene Name
-
-## Cloning or Downloading Repository From Github
+* **how to clone repo or download from github**
 
 ## Python Wrapper
 After completing quality control locally. Data files can be input into the python wrapper, [zorya.py](https://github.com/jng2/SeqDiff_RNA/blob/master/zorya.py) that will run through every other step of the differential expression pipeline. In order to run the pipeline, in terminal on a mac or command prompt on a windows computer, type the following comand:
@@ -42,7 +31,7 @@ The following arguments for the python wraper are for the following pieces of in
 * **--UseParser**: if MyGene no longer can retrieve information from FlyBase (due to FlyBase transitioning to a paid database) 
 
 # Additional tips for running from command line
-To run a program from the command line, you must navigate to the folder where the program is located or know the file path to said program. When you open the command line, you will be located within your user directory/folder. You can get a list of the files and other directories within the current directory by typing 'ls' in to the command line. To enter into any of the directories listed you can type 'cd x', replacing 'x' with an actual directory name, such as "Documents'. It is recommended you place your files somewhere easy to find, within your home(~) directory. For the first example below, the full path to our encompassing would be ~/Documents/ExampleRun/
+To run a program from the command line, you must navigate to the folder where the program is located or enter the fyll path to said program. When you open the command line, you will be located within your user directory/folder. You can get a list of the files and other directories within the current directory by typing 'ls' in to the command line. You can also find out what the path to your current directory by typing 'pwd'. To enter into any of the directories listed by 'ls', you can type 'cd x', replacing 'x' with an actual directory name, such as "Documents'. It is recommended you place your files somewhere easy to find, within a folder close to your home(~) directory. For the first example below, the full path to our encompassing would be ~/Documents/ExampleRun/.  In some operating systems it is possible to drag and drop files onto the command line and it will automatically write the full path to that file. 
 
 For each argument, if you aren't currently located within the directory containing your file, you must provide the full path to said file. For example: ~/Documents/myfile.gtf
 
@@ -60,8 +49,97 @@ It is reccomended that you:
 - Create a folder for each unique species differential expression project 
 - Disignate folders for output and metadata within project folder
 - Put all of the fastq files you wish to run within a single folder. 
-- Add the optional argument --NoStarGenome if you have run it one time successfully for y
+- Add the optional arguments --NoStarGenome if you have generated a STAR genome and --NoStarAlignment if you have aligned your fastq files to your reference genome. This will significantly reduce the time for a run. 
 
+
+## How to use STAR
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4631051/
+
+Alternate Protocol 9: Mapping RNA-seq reads and running Cufflinks to assemble and quantify transcripts for un-stranded RNA-seq data Cufflinks (Trapnell et al 2010) is a popular software package for assembly and quantification of transcript using RNA-seq data. In this protocol STAR outputs BAM file with coordinate-sorted alignments, which is then used by Cufflinks to assemble and quantify novel transcript structures. This Protocol works with un-stranded RNA-seq data. For stranded RNA-seq data see the Alternate Protocol 7.
+
+Necessary Resources Hardware Same as in the Basic Protocol.
+
+Software Same as in the Alternate Protocol 7.
+
+Input files Same as in the Basic Protocol.
+
+Generating the coordinate-sorted BAM file and running Cufflinks transcript assembly and quantification
+
+
+
+Make a run directory and switch to it:
+```
+mkdir ~/star/alt_cuff-unstr cd ~/star/alt_cuff-unstr 2. Map the FASTQ files located in the ~/star/directory (see Input Files) outputting coordinate-sorted BAM:
+```
+
+~/star/code/STAR-STAR_2.4.0k/bin/Linux_x86_64/STAR
+--runThreadN 12 --genomeDir ~/star/genome/ 
+--sjdbGTFfile ~/star/Homo_sapiens.GRCh38.79.gtf --sjdbOverhang 100 
+--readFilesIn ~/star/ENCFF001RFH.fastq.gz ~/star/ENCFF001RFG.fastq.gz --readFilesCommand zcat 
+--outSAMtype BAM SortedByCoordinate Unsorted 
+--outSAMstrandField intronMotif --outSAMstrandField intronMotif option adds an XS attribute to the spliced alignments in the BAM file, which is required by Cufflinks for unstranded RNA-seq data.
+
+In the same directory run the basic Cufflinks command:
+```
+~/star/code/cufflinks-2.2.1.Linux_x86_64/cufflinks -p 12 Aligned.sortedByCoord.out.bam -p 12 defines the number of threads used by Cufflinks.
+```
+
+Cufflinks output files are described in Alternative Protocol 7.
+
+
+## Bioconductor Installation 
+Bioconductor: Run these lines in R
+```
+source("http://bioconductor.org/workflows.R")
+workflowInstall("rnaseqGene")
+```
+## R Packages Necessary for Bioconductor Alignment
+
+[dplyr](https://cran.r-project.org/web/packages/dplyr/index.html)
+tool for working with data frame like objects, both in and out of memory
+
+[ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html)
+tool for creating data visualizations using the grammar of graphics
+
+## Bioconductor Necessary Software Packages
+source(“https://bioconductor.org/biocLite.R”)
+````
+biocLite(c(“Rsamtools”, “DESeq2”, “GenomicFeatures”,"BiocParallel","GenomicRanges","GenomicAlignments"))
+````
+[Rsamtools](https://bioconductor.org/packages/3.6/bioc/html/Rsamtools.html)
+provides facilities for parsing samtools BAM (binary) files representing aligned sequences
+
+[DESeq2](https://bioconductor.org/packages/3.6/bioc/html/DESeq2.html)
+performs differential gene expression analysis based on the negative binomial distribution
+
+[GenomicFeatures](https://bioconductor.org/packages/3.6/bioc/html/GenomicFeatures.html)
+provides tools for making and manipulating transcript centric annotations
+
+[BiocParallel](https://www.bioconductor.org/packages/release/bioc/html/BiocParallel.html)
+provides modified versions and novel implementations of functions for parallel evaluation of Bioconductor objects
+
+[GenomicRanges](https://www.bioconductor.org/packages/release/bioc/html/GenomicRanges.html)
+representation and manipulation of genomic intervals defined along a genome
+
+[GenomicAlignments](https://www.bioconductor.org/packages/release/bioc/html/GenomicAlignments.html)
+representation and manipulation of short genomic alignments
+
+## Bioconductor Metadata Input File Format
+
+It is important that the Metadata is formatted properly in order for Bioconductor to run properly. Here is an [example of the proper format](https://github.com/jng2/SeqDiff_RNA/blob/master/metadata.txt):
+````
+File,Time,Group,Run
+C_3W_A_USR16088998L_HHFWCBBXX_L5_1,3W,Control,C_3W_A_USR16088998L_HHFWCBBXX_L5_1
+````
+In this example, the file name is C_3W_A_USR16088998L_HHFWCBBXX_L5_1, it is from the 3 week time point, in the control group, and run is the file name repeated.
+
+## Bioconductor Alignment
+[DESeq2](https://bioconductor.org/packages/3.6/bioc/html/DESeq2.html) is a Bioconductor package that performs differential gene expression analysis based on the negaitve binomial distribution. In this pipeline, the DESeq2 is used to determine which genes are differenitally expressed between pipelines using [_SummarizedExperiment_](http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#summarizedexperiment-input) input.
+
+## Obtaining FlyBase data with Bioconductor MyGene
+
+[MyGene](https://bioconductor.org/packages/release/bioc/html/mygene.html) is a Bioconductor package that allows users to query and retrieve gene annotation data from a variety of online databases. This pipeline uses it to obtain the gene symbol and gene type of a the differentially expressed genes determined by DeSeq2. This information is then added to the Bioconductor final csv output. 
 
 ## Final Bioconductor Output
 
