@@ -30,16 +30,6 @@ To run a program from the command line, you must navigate to the folder where th
 
 For each argument, if you aren't currently located within the directory containing your file, you must provide the full path to said file. For example: ~/Documents/myfile.gtf
 
-Example: Run named "ExampleRun" w/ Folder of fastq files 
-```
-python3 zorya.py ~/Documents/Zorya/ExampleRun/Fastqs/ ~/Documents/Zorya/ExampleRun/my_organism.fasta ~/Documents/Zorya/ExampleRun/annotation.gtf ~/Documents/Zorya/ExampleRun/Output/ ~/Documents/Zorya/metadata.csv
-```
-
-Example: Run named "ExampleRun2" w/ single fastq
-```
-python3 zorya.py ~/Documents/Zorya/ExampleRun2/my_organism.fastq ~/Documents/Zorya/ExampleRun2/my_organism.fasta ~/Documents/Zorya/ExampleRun2/annotation.gtf ~/Documents/Zorya/ExampleRun2/Output/ ~/Documents/Zorya/ExampleRun2/Metadata/
-```
-
 It is reccomended that you:
 - Create a folder for each unique species differential expression project 
 - Disignate folders for output and metadata within project folder
@@ -62,6 +52,15 @@ The following arguments for the python wraper are for the following pieces of in
 * **--NoStarAligmnent**: add this argument if you have previously aligned the fastq files to the reference genome (this step takes a long time, so adding this agrument allows you to skip it if it has already been completed)
 * **--UseParser**: if MyGene no longer can retrieve information from FlyBase (due to FlyBase transitioning to a paid database) 
 
+Example: Run named "ExampleRun" w/ Folder of fastq files 
+```
+python3 zorya.py ~/Documents/Zorya/ExampleRun/Fastqs/ ~/Documents/Zorya/ExampleRun/my_organism.fasta ~/Documents/Zorya/ExampleRun/annotation.gtf ~/Documents/Zorya/ExampleRun/Output/ ~/Documents/Zorya/metadata.csv
+```
+
+Example: Run named "ExampleRun2" w/ single fastq
+```
+python3 zorya.py ~/Documents/Zorya/ExampleRun2/my_organism.fastq ~/Documents/Zorya/ExampleRun2/my_organism.fasta ~/Documents/Zorya/ExampleRun2/annotation.gtf ~/Documents/Zorya/ExampleRun2/Output/ ~/Documents/Zorya/ExampleRun2/metadata.csv
+```
 
 ## Final Bioconductor Output
 
