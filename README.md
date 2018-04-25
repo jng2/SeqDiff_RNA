@@ -23,7 +23,7 @@ Time is the time at which the DNA was extracted from the cells (ex: 3W or 2W)
 Group is either Control or JetLagged
 Run is a restatement of the Gene Name
 
-* **how to clone repo or download from github**
+## Cloning or Downloading Repository From Github
 
 ## Python Wrapper
 After completing quality control locally. Data files can be input into the python wrapper, [zorya.py](https://github.com/jng2/SeqDiff_RNA/blob/master/zorya.py) that will run through every other step of the differential expression pipeline. In order to run the pipeline, in terminal on a mac or command prompt on a windows computer, type the following comand:
