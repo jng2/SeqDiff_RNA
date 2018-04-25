@@ -1,2 +1,0 @@
-/homes/jng2/UntitledFolder/AlignMe/
-test file:  C_2W_A_USR16088995L_HHFWCBBXX_L5_1_staroutAligned.out.bam
