@@ -23,7 +23,9 @@ In this example, the file name is C_3W_A_USR16088998L_HHFWCBBXX_L5_1, it is from
 
 ## Cloning or Downloading Repository from Github
 
-# Additional tips for running from command line
+To clone or download this repository, click clone or download on the main page of this github repository. 
+
+## Additional tips for running from command line
 To run a program from the command line, you must navigate to the folder where the program is located or enter the full path to said program. When you open the command line, you will be located within your user directory/folder. You can get a list of the files and other directories within the current directory by typing 'ls' in to the command line. You can also find out what the path to your current directory by typing 'pwd'. To enter into any of the directories listed by 'ls', you can type 'cd x', replacing 'x' with an actual directory name, such as "Documents'. It is recommended you place your files somewhere easy to find, within a folder close to your home(~) directory. For the first example below, the full path to our encompassing would be ~/Documents/ExampleRun/.  In some operating systems it is possible to drag and drop files onto the command line and it will automatically write the full path to that file. 
 
 For each argument, if you aren't currently located within the directory containing your file, you must provide the full path to said file. For example: ~/Documents/myfile.gtf
