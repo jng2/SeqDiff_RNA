@@ -1,5 +1,5 @@
-args=commandArgs(trailingOnly = TRUE)
-if(args[4]=='yes'){
+args=commandArgs(trailingOnly = TRUE) 
+if(args[4]=='yes'){  #If this argument is found, then will run the install for all of the packages
   source("https://bioconductor.org/biocLite.R")
   biocLite(c("Rsamtools", "DESeq2", "GenomicFeatures","BiocParallel","GenomicRanges","GenomicAlignments","Rsamtools","mygene"))
   
@@ -16,60 +16,51 @@ library("ggplot2")
 library("mygene")
 
 
-ptm <- proc.time()
+ptm <- proc.time() #sets up a timer
 
-sampleTable <-read.csv(args[1],row.names=1)
-filenames <- file.path(args[2],paste0(sampleTable$Run,".sd_staroutAligned.out.bam")) #naming might fuck up ><
-bamfile <-BamFileList(filenames,yieldSize = 2000000)
+sampleTable <-read.csv(args[1],row.names=1) #creates a table that holds the in from the meta text file
+filenames <- file.path(args[2],paste0(sampleTable$Run,".sd_staroutAligned.out.bam")) #grabs the .bam files from aligner
+bamfile <-BamFileList(filenames,yieldSize = 2000000) #creates a large object that holds all of the bam files
 
-gtffile <- file.path(args[3])
-txdb <- makeTxDbFromGFF(gtffile, format = "gtf", circ_seqs = character())
-
-
-ebg <- exonsBy(txdb, by="gene")
-
-register(SerialParam())
+gtffile <- file.path(args[3]) #grabs the gtf file
+txdb <- makeTxDbFromGFF(gtffile, format = "gtf", circ_seqs = character()) #creates a gene model object necessary for analysis.  HOlds things like information about exons, transcripts and genes.
 
 
-se <- summarizeOverlaps(features=ebg, reads=bamfile,
+ebg <- exonsBy(txdb, by="gene") #Produces list of all exons grouped by gene
+
+register(SerialParam()) #limits usage to one core
+
+#creates a SummarizedExperiment object, which contains information about the experiment that will be fed into DESeq2
+
+se <- summarizeOverlaps(features=ebg, reads=bamfile, 
                         mode="Union",
                         singleEnd=FALSE,
                         ignore.strand=TRUE,
                         fragments=TRUE )
 
 
-colData(se) <- DataFrame(sampleTable)
+colData(se) <- DataFrame(sampleTable) #grab the column names from the metadata 
 colData(se)
 #i <- args[4]
-dds<-DESeqDataSet(se,design = ~ Group)
+dds<-DESeqDataSet(se,design = ~ Group) #runs the analysis of the column "Group"
 nrow(dds)
-dds <- dds[ rowSums(counts(dds)) > 1, ]
+dds <- dds[ rowSums(counts(dds)) > 1, ] #gets rid of zero/1 value counts
 nrow(dds)
 
 dds <- DESeq(dds)
 res <- results(dds)
-res
-#res <- results(dds, contrast=c("Group","Control","JetLagged"))
+summary(res) #displays results of p-value .10
 res.05 <- results(dds, alpha = 0.05)
-res.05sub <- subset(res.05,padj<.05)
-mcols(res.05,use.names = TRUE)
-#mcols(res, use.names = TRUE)
-summary(res.05)
-print('why')
-write.csv(res,file="2W_ControlJetLaggedp_1.csv")
-write.csv(res.05sub,file="testmeOut.csv")
-print('please')
-hi=read.csv("2W_ControlJetLaggedp_1.csv",header=TRUE)
-print('fuck')
-hey<-getGenes(hi[,1],fields = "symbol type_of_gene")
-print('fucccccdsasd')
+res.05sub <- subset(res.05,padj<.05) #saves subset of results with adjusted pvalue of .05
 
+#summary(res.05)
+write.csv(res,file="Outputp.10.csv")
+write.csv(res.05sub,file="Outputp.05.csv")
+hi=read.csv("Outputp.10.csv",header=TRUE)
+hey<-getGenes(hi[,1],fields = "symbol type_of_gene") #uses my gene function getGenes to talk with FlyBase to grab relevant information
 hey<-hey[!duplicated(hey[1]),]
-
-
 hi$symbol<-hey$symbol
+hi$type<-hey$type_of_gene #places into hi object
+write.csv(hi,file="Outputp.10.csv") #rewrites the file
 
-hi$type<-hey$type_of_gene
-
-write.csv(hi,file="2W_ControlJetLaggedp_1NoContstast.csv")
 
