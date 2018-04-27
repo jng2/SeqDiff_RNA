@@ -28,13 +28,14 @@ args = parser.parse_args()
 
 ##file identification
 
-#identify fastq or directory(compressed or not) containing all fastq files
+#identify fastq or directory containing all fastq files
 filelist=[]
 if(os.path.isdir(args.fq)):
     filelist=os.listdir(args.fq)
+    for file in filelist:
+        if((".fastq" not in file) and (".fq" not in file)):
+            sys.exit(0)
 elif(os.path.isfile(args.fq)):
-    #if ".gz" in args.fq:
-     #   filelist=os.listdir(gzip.open(args.fq))
     if(".fastq" in args.fq or ".fq" in args.fq):
         filelist.append(args.fq)
 else:
