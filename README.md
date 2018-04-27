@@ -4,10 +4,8 @@
 Based on experimental results from the [Cavanaugh Lab](https://cavanaughlab.weebly.com) at Loyola University Chicago.
 
 ## Important Notes
-Will only work on a machine running LINUX or MacOS.  Python3.6 and R are needed.
-Python3.6 can be downloaded from:  https://www.python.org/downloads/release/python-365/
-
-R can be downloaded here:  https://cran.r-project.org/mirrors.html
+Will only work on a machine running LINUX or MacOS.  [Python3.6](https://www.python.org/downloads/release/python-365/)
+ and [R](https://cran.r-project.org/mirrors.html) are needed.
 
 STAR, Python and R must be added to your system's global environment PATH.
 
