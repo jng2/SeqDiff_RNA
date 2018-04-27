@@ -5,12 +5,7 @@ import gzip
 
 
 
-##WORK IN PROGRESS
 
-#Shouldn't run nohup in wrapper, probably running on windows machine.  Maybe find something else?
-#Any other arguments?
-#Ways we can make sure that the code will stop if user does something wrong?
-#We need a function call to fastqc, how should we approach it?
 
 
 #set up our argument parser
