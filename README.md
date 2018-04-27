@@ -3,6 +3,8 @@
 
 Based on experimental results from the [Cavanaugh Lab](https://cavanaughlab.weebly.com) at Loyola University Chicago.
 
+Important note:  Will only work on a LINUX machine or MacOS.
+
 ## FastQC for quality control
 Download FastQC from https://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc
 Drag and Drop files into FastQC to determine quality of data
