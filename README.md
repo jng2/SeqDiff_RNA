@@ -30,26 +30,26 @@ To run a program from the command line, you must navigate to the folder where th
 
 For each argument, if you aren't currently located within the directory containing your file, you must provide the full path to said file. For example: ~/Documents/myfile.gtf
 
-It is reccomended that you:
+It is recommended that you:
 - Create a folder for each unique species differential expression project 
-- Disignate folders for output and metadata within project folder
+- Designate folders for output and metadata within project folder
 - Put all of the fastq files you wish to run within a single folder. 
 - Add the optional arguments --NoStarGenome if you have generated a STAR genome and --NoStarAlignment if you have aligned your fastq files to your reference genome. This will significantly reduce the time for a run. 
 
 ## Python Wrapper
-After completing quality control locally. Data files can be input into the python wrapper, [zorya.py](https://github.com/jng2/SeqDiff_RNA/blob/master/zorya.py) that will run through every other step of the differential expression pipeline. In order to run the pipeline, in terminal on a mac or command prompt on a windows computer, type the following comand:
+After completing quality control locally. Data files can be input into the python wrapper, [zorya.py](https://github.com/jng2/SeqDiff_RNA/blob/master/zorya.py) that will run through every other step of the differential expression pipeline. In order to run the pipeline, in terminal on a mac or command prompt on a windows computer, type the following command:
 ```
 python3 zorya.py fq fa gtf out meta --NoStarGenome --NoStarAlignment --UseParser
 ```
 
-The following arguments for the python wraper are for the following pieces of information:
+The following arguments for the python wrapper are for the following pieces of information:
 * **fq**: the fastq file or directory(compressed or not) containing all fastq files
 * **fa**: the fasta file containing the reference genome
-* **gtf**: the gtf file containing the gtf gene annoation for the reference genome (note: the fasta and gtf files for the reference genome should be obtained from the same source to avoid difficulties with STAR alignment)
+* **gtf**: the gtf file containing the gtf gene annotation for the reference genome (note: the fasta and gtf files for the reference genome should be obtained from the same source to avoid difficulties with STAR alignment)
 * **out**: the output directory
 * **meta**: metadata csv file path (file construction process shown below)
-* **--NoStarGenome**: add this argument if you have previously set up a STAR genome (this step takes a long time, so adding this agrument allows you to skip it if it has already been competed)
-* **--NoStarAligmnent**: add this argument if you have previously aligned the fastq files to the reference genome (this step takes a long time, so adding this agrument allows you to skip it if it has already been completed)
+* **--NoStarGenome**: add this argument if you have previously set up a STAR genome (this step takes a long time, so adding this argument allows you to skip it if it has already been completed)
+* **--NoStarAligmnent**: add this argument if you have previously aligned the fastq files to the reference genome (this step takes a long time, so adding this argument allows you to skip it if it has already been completed)
 * **--UseParser**: if MyGene no longer can retrieve information from FlyBase (due to FlyBase transitioning to a paid database) 
 
 Example: Run named "ExampleRun" w/ Folder of fastq files 
@@ -70,7 +70,7 @@ The final Bioconductor output is a csv file containing the following information
 * **log2FoldChange**: effect size estimate, how much a gene's expression has changed between groups 
 * **lfcSE(logfoldchangeStandardError)**: estimate of uncertainty of the effect size estimate
 * **stat**: Wald statistic
-* **p-value**: Wald test p-value, the probability thta the fold change is as strong as the observed one or stronger given the null hypotheses
+* **p-value**: Wald test p-value, the probability that the fold change is as strong as the observed one or stronger given the null hypotheses
 * **padj**: Benjamini-Hochberg adjusted p-value, lowered false discovery rate
 * **symbol**: gene symbol obtained from MyGene database
 * **type**: gene type obtained from MyGene database
