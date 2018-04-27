@@ -3,7 +3,14 @@
 
 Based on experimental results from the [Cavanaugh Lab](https://cavanaughlab.weebly.com) at Loyola University Chicago.
 
-Important note:  Will only work on a LINUX machine or MacOS.
+## Important Notes
+Will only work on a machine running LINUX or MacOS.  Python3.6 and R are needed.
+Python3.6 can be downloaded from:  https://www.python.org/downloads/release/python-365/
+R can be downloaded here:  https://cran.r-project.org/mirrors.html
+
+STAR, Python and R must be added to your system's global environment PATH.
+
+Links to help you add these programs for [MacOS](https://www.architectryan.com/2012/10/02/add-to-the-path-on-mac-os-x-mountain-lion/#.Uydjga1dXDg) and [LINUX](https://www.youtube.com/watch?v=lhDiQZdUQRI)
 
 ## FastQC for quality control
 Download FastQC from https://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc
