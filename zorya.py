@@ -29,17 +29,18 @@ args = parser.parse_args()
 ##file identification
 
 #identify fastq or directory containing all fastq files
-filelist=[]
-if(os.path.isdir(args.fq)):
+filelist=[] #stores all fastq
+if(os.path.isdir(args.fq)): # check if argument given is directory
     filelist=os.listdir(args.fq)
     for file in filelist:
-        if((".fastq" not in file) and (".fq" not in file)):
+        if((".fastq" not in file) and (".fq" not in file)): #check that the files given within the directory are fastq files, else end program
+            print("fastq directory contains inelligible files")
             sys.exit(0)
-elif(os.path.isfile(args.fq)):
+elif(os.path.isfile(args.fq)): # check if argument given is file
     if(".fastq" in args.fq or ".fq" in args.fq):
         filelist.append(args.fq)
-else:
-    print("fastq could not be found") #kill the program here!
+else:#we can't find any 
+    print("fastq could not be found") 
     sys.exit(0)
 filelist.sort() #sort should allow for it.  Check by odd/even amount for left right? Check for duplicates?
 star=args.NoStarGenome
@@ -62,12 +63,7 @@ else:
     sys.exit(0)
 
 #loop through fastq files and run them on star
-#we can add an if statement here to check if we even need to run star. 
-#this now works!
-
-#need a checker to make sure there are matching pairs of the repeats
-
-if star=='no':
+if star=='no': #forgo alignment if user dictates such
     os.system("STAR --runThreadN 1 --runMode genomeGenerate --genomeDir "+args.out+" --sjdbGTFfile "+gtf+' --sjdbOverhang 100 --genomeFastaFiles '+fasta)
 if alignMe =='no':
     x=0
@@ -90,15 +86,13 @@ if alignMe =='no':
 
     
   #######  BIOCONDUCTOR
-  #This will display output
-  # testGeneExpression.R that stores output of multiple runs into a directory. I->It doesn't.  I can try to do that?
-  # Then we can view our data in a more organized manner.
+#By default bioconductor's mygene is used to pull info from flybase
 if args.UseParser=='no':
     hi=args.out
     hi=hi[:-1]
    # group=args.group.strip()
     os.system("Rscript testGeneExpression.R "+args.meta+' ' +hi + ' ' + gtf + ' ' + args.RInstall) 
-
+#in the event user doesn't want to use bioconductor's mygene to pull info from flybase, they can use this parser to pull info from annotation
 else:
     import csv
     holdme={}
